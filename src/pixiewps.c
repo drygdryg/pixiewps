@@ -1600,6 +1600,7 @@ static int crack_first_half(struct global *wps, char *pin, const uint8_t *es1_ov
 	const uint8_t *es1 = es1_override ? es1_override : wps->e_s1;
 
 	if (check_empty_pin_half(es1, wps, wps->e_hash1)) {
+		DEBUG_PRINT("First half found: <empty>");
 		memcpy(wps->psk1, wps->empty_psk, WPS_HASH_LEN);
 		return -1;
 	}
@@ -1613,6 +1614,7 @@ static int crack_first_half(struct global *wps, char *pin, const uint8_t *es1_ov
 		uint_to_char_array(first_half, 4, pin);
 		if (check_pin_half(&hc, pin, psk, es1, wps, wps->e_hash1)) {
 			pin[4] = 0; /* Make sure pin string is zero-terminated */
+			DEBUG_PRINT("First half found: %s", pin);
 			memcpy(wps->psk1, psk, sizeof psk);
 			return 1;
 		}

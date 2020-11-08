@@ -47,6 +47,7 @@
 # define WPS_PIN_LEN          8
 #endif
 
+#define DEBUG 1
 #if defined(DEBUG)
 # define DEBUG_PRINT(fmt, args...) do { printf("\n [DEBUG] %s:%4d:%s(): " fmt, \
 	__FILE__, __LINE__, __func__, ##args); fflush(stdout); } while (0)
